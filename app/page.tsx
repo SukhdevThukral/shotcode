@@ -8,7 +8,7 @@ export default function Home() {
       </span> */}
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-15 pt-20 md:flex-row md:items-start md:justify-between">
         <div className="max-w-xl">
-          <h1 className="font-serif font-medium text-5xl leading-tight tracking-tight text-black md:text-6xl">
+          <h1 className="font-serif font-medium text-5xl leading-tight tracking-tight text-black md:text-6xl ">
             Design interfaces. Let <br/>AI write the{" "} 
             <span className="bg-green-400 px-2 py-[0px] leading-none">code</span>
           </h1>
