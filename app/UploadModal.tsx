@@ -3,8 +3,10 @@ import {X, Folder} from "lucide-react";
 export default function UploadModal(){
     return(
         <div className="relative flex items-center justify-center p-20">
-            <div className="absolute inset-0 -z-10 blur-3xl" 
+            <div className="absolute -z-10 blur-2xl" 
             style={{
+                width: "1000px",
+                height: "400px",
                 background: "radial-gradient(circle at 30% 30%, rgba(134,239,172,0.5), transparent 50%), radial-gradient(circle at 70% 70%, rgba(253,224,71,0.4), transparent 50%)",
                 }}/>
             <div className="w-full max-w-md rounded-2xl border border-gray-100 bg-white p-6">
