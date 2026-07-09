@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative overflow-hidden">
       {/* <span className="font-md" style={{fontFamily: "Gelica"}}>
         Design interfaces.<br/> Let AI write the components
       </span> */}
