@@ -1,4 +1,6 @@
-import Image from "next/image";
+"use client"
+
+import UploadModal from "./UploadModal";
 
 export default function Home() {
   return (
@@ -22,6 +24,12 @@ export default function Home() {
           production-safe React or Vue code without manual wiring
         </p>
       </div>
+
+      <UploadModal 
+      onFileAccepted={(file) => {
+        console.log("Got file:", file);
+      }}/>
+      
     </main>
   );
 }
