@@ -32,3 +32,17 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+@keyframes shimmer {
+  0% { background-position: -400px 0;}
+  100% {background-position: 400px 0;}
+}
+
+@keyframes codeLineIn {
+  from { opacity: 0; transform: translateY(4px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateX(16px);}
+  to {opacity: 1; transform: translateX(0);}
+}
