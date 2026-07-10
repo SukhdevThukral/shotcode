@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import UploadModal from "./UploadModal";
+import CodeEditorPanel from "./CodeEditorPanel";
 
 export default function Home() {
   const [generatedCode, setGeneratedCode] = useState<string | null>(null);
@@ -36,8 +37,10 @@ export default function Home() {
     }
   };
 
+  const showPanel = isGenerating || !!generatedCode;
+
   return (
-    <main className="relative overflow-hidden">
+    <main className="relative overflow-hidden pb-24">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-15 pt-20 md:flex-row md:items-start md:justify-between">
         <div className="max-w-xl">
           <h1 className="font-serif font-medium text-5xl leading-tight tracking-tight text-black md:text-6xl ">
@@ -55,20 +58,23 @@ export default function Home() {
         </p>
       </div>
 
-      <UploadModal 
-      onFileAccepted={handleFileAccepted}/>
+      <div className={`mx-auto mt-10 grid max-w-7xl gap-8 px-15 transition-all duration-500 ${showPanel ? "md:grid-cols-2" : "grid-cols-1"}`}>
+        <div>
+          <UploadModal onFileAccepted={handleFileAccepted}/>
+          {genError && (
+            <p className="mt-4 text-center text-sm text-red-500">{genError}</p>
+          )}
+        </div>
 
-      {isGenerating && (
-        <p className="text-center text-sm text-gray-500 mt-6">Generating code...</p>
-      )}
-      {genError && (
-        <p className="text-center text-sm text-red-500 mt-6">{genError}</p>
-      )}
-      {generatedCode && (
-        <pre className="mx-auto mt-6 max-w-3xl overflow-x-auto rounded-xl bg-black p-4 text-xs text-green-300">
-          <code>{generatedCode}</code>
-        </pre>
-      )}
+        {showPanel && (
+          <div className="flex h-full flex-col">
+            <div className="h-16 shrink-0" aria-hidden="true"/>
+            <div className="min-h-[420px] flex-1 animate-[panelIn_0.4s_ease]">
+              <CodeEditorPanel code={generatedCode} isGenerating={isGenerating}/>
+            </div>
+          </div>
+        )}
+      </div>
     </main>
   );
 }
