@@ -2,8 +2,10 @@
 import { useState } from "react";
 import UploadModal from "./UploadModal";
 import CodeEditorPanel from "./CodeEditorPanel";
+import ExamplePanel from "./ExamplePanel";
 
 export default function Home() {
+  const [framework, setFramework] = useState<"react" | "vue">("react");
   const [generatedCode, setGeneratedCode] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [genError, setGenError] = useState<string | null>(null);
@@ -16,7 +18,7 @@ export default function Home() {
     try{
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("framework", "react");
+      formData.append("framework", framework);
 
       const res = await fetch("/api/generate-code", {
         method: "POST",
@@ -58,22 +60,43 @@ export default function Home() {
         </p>
       </div>
 
-      <div className={`mx-auto mt-10 grid max-w-7xl gap-8 px-15 transition-all duration-500 ${showPanel ? "md:grid-cols-2" : "grid-cols-1"}`}>
-        <div>
+      
+
+      <div className="mx-auto mt-10 grid max-w-7xl gap-8 px-15 transition-all duration-500 md:grid-cols-2">
+        <div className="min-w-0">
+          <div className="mb-4 flex items-center gap-2">
+            <span className="text-xs text-gray-400">Output as:</span>
+            <div className="flex rounded-full border border-gray-200 p-0.5">
+              <button onClick={() => setFramework("react")}
+                  className={`rounded-full px-3 py-1 text-xs transition-colors ${
+                    framework === "react" ? "bg-green-400 text-black" : "text-gray-400"
+              }`}>
+                React
+              </button>
+              <button onClick={() => setFramework("vue")}
+                  className={`rounded-full px-3 py-1 text-xs transition-colors ${
+                    framework === "vue" ? "bg-green-400 text-black" : "text-gray-400"
+              }`}>
+                Vue
+              </button>          
+            </div>
+          </div>
           <UploadModal onFileAccepted={handleFileAccepted}/>
           {genError && (
             <p className="mt-4 text-center text-sm text-red-500">{genError}</p>
           )}
         </div>
 
-        {showPanel && (
-          <div className="flex h-full flex-col">
-            <div className="h-16 shrink-0" aria-hidden="true"/>
-            <div className="min-h-[420px] flex-1 animate-[panelIn_0.4s_ease]">
+        <div className="flex h-full flex-col min-w-0">
+          <div className="h-16 shrink-0" aria-hidden="true"/>
+          <div className="min-h-[420px] min-w-0 flex-1 animate-[panelIn_0.4s_ease]">
+            {showPanel ? (
               <CodeEditorPanel code={generatedCode} isGenerating={isGenerating}/>
-            </div>
+            ):(
+              <ExamplePanel/>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </main>
   );
