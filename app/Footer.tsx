@@ -21,7 +21,7 @@ export default function Footer(){
         <section className="px-4 py-10 md:px-10">
             <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[28px] px-8 pt-14 pb-8 md:px-14 md:pt-16"
             style={{background: "radial-gradient(120% 90% at 15% 0%, #10B981  0%, #58c942 50%, #030712 100%)",}}>
-                <div className="pointer-events-none absolute inset-0" style={{background: "radial-gradient(45% 35% at 55% 55%, rgba(230, 226, 255, 0.55) 0%, rgba(20,14,56,0) 70%)",}} aria-hidden="true"/>
+                <div className="pointer-events-none absolute inset-0" style={{background: "radial-gradient(120% 90% at 15% 0%, #10B981 12%, #1E3A8A 50%, #0F172A 100%)",}} aria-hidden="true"/>
                 <div className="relative">
                     <h2 className="max-w-md text-4xl font-normal leading-tight text-white md:text-5xl">
                         Collab ;p?
