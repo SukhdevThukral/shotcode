@@ -3,7 +3,7 @@
 import { useMemo, useState, useEffect } from "react";
 import { Copy, Check } from "lucide-react";
 
-type TokenType = "comment" | "string" | "number" | "keyword" | "identifier" | "function" | "plain";
+export type TokenType = "comment" | "string" | "number" | "keyword" | "identifier" | "function" | "plain";
 
 interface Token {
     text: string;
@@ -23,7 +23,7 @@ const KEYWORDS = new Set([
 const token_regex = 
   /(\/\/.*$)|(`(?:\\.|[^`\\])*`|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|(\b\d+(?:\.\d+)?\b)|([A-Za-z_$][\w$]*)/gm;
 
-const token_colors: Record<TokenType, string> = {
+export const token_colors: Record<TokenType, string> = {
   comment: "text-neutral-400",
   string: "text-orange-600",
   number: "text-teal-600",
@@ -33,7 +33,7 @@ const token_colors: Record<TokenType, string> = {
   plain: "text-neutral-800",
 }
 
-function tokenizeLine(line: string): Token[] {
+export function tokenizeLine(line: string): Token[] {
     const tokens: Token[] = [];
     let lastIndex = 0;
     let match: RegExpExecArray | null;
@@ -120,8 +120,8 @@ export default function CodeEditorPanel({
     if(!isGenerating && !code) return null;
 
     return (
-        <div className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-neutral-800 bg-neutral-950 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-white/10 bg-neutral-900 px-4 py-2.5">
+        <div className="flex h-full w-full min-w-0 flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-2xl">
+            <div className="flex items-center justify-between border-b border-neutral-200 bg-neutral-50 px-4 py-2.5">
                 <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 rounded-full bg-red-400"/>
                     <span className="h-2.5 w-2.5 rounded-full bg-yellow-400"/>
@@ -130,13 +130,13 @@ export default function CodeEditorPanel({
                 </div>
                 {code && (
                     <button onClick={handleCopy}
-                    className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-neutral-400 transition-colors hover:bg-white/10 hover:text-white">
+                    className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-neutral-400 transition-colors hover:bg-white/10 hover:text-black">
                         {copied ? <Check size={13}/> : <Copy size={13}/>}
                         {copied ? "Copied":"Copy"}
                     </button>
                 )}
             </div>
-            <div className="flex-1 overflow-auto py-3 font-mono text-[11px] leading-5">
+            <div className="mini-w-0 flex-1 overflow-auto py-3 font-mono text-[11px] leading-5">
                 {isGenerating && !code && (
                     <div className="flex flex-col gap-2.5 px-4">
                         {SKELETON_WIDTHS.map((w, i) => (
