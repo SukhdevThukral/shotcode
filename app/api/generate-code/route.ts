@@ -30,6 +30,10 @@ Transform it into clean, production-safe code by following this architecture exa
 8. Return ONLY the code. No explanations, no markdown fences, no commentary before or after.
 
 `;
+function stripCodeFences(text: string): string{
+    return text.trim()
+    .replace(/^```[a-zA-Z]*\n?/, "").replace(/```$/, "").trim();
+}
 
 export async function POST(req: NextRequest) {
     try {
@@ -62,7 +66,8 @@ export async function POST(req: NextRequest) {
                 },
             },
         ]);
-        const code = result.response.text();
+        
+        const code = stripCodeFences(result.response.text());
 
         return NextResponse.json({ code });
     } catch(err) {
