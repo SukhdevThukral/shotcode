@@ -94,9 +94,6 @@ export default function UploadModal({onFileAccepted, onClose}: UplaodModalProps)
             <div className="w-full max-w-md rounded-2xl border border-gray-100 bg-white p-6">
                 <div className="flex items-center justify-between">
                     <h2 className="font-semibold text-base tracking-tight text-black">Upload your file</h2>
-                    <button className="text-gray-400 hover:text-black" onClick={onClose}>
-                        <X size={18}/>
-                    </button>
                 </div>
 
                 <div onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }} 
