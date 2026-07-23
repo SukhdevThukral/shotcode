@@ -50,7 +50,7 @@ export default function Home() {
             <span className="bg-green-400 px-2 py-[0px] leading-none">code</span>
           </h1>
 
-          <button className="mt-8 rounded-full bg-blue px-6 py-3 text-sm font-medium text-mdium text-white hover: bg-gray-800 transition-colors">
+          <button className="mt-8 bg-blue px-6 py-3 text-sm font-medium text-mdium text-white hover: bg-gray-800 transition-colors">
             Generate with AI
           </button>
         </div>
