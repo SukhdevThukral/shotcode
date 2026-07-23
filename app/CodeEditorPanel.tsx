@@ -36,32 +36,18 @@ export const token_colors: Record<TokenType, string> = {
 export function tokenizeLine(line: string): Token[] {
     const tokens: Token[] = [];
     let lastIndex = 0;
-    let match: RegExpExecArray | null;
-    token_regex.lastIndex = 0;
 
-    while ((match = token_regex.exec(line)) !== null) {
+    for (const match of line.matchAll(token_regex)) {
         if (match.index > lastIndex) {
             tokens.push({ text: line.slice(lastIndex, match.index), type: "plain"});
         }
+
         const [full, comment, str, num, word] = match;
-        if(comment) {
-            tokens.push({ text: comment, type: "comment" });
-        } else if(str){
-            tokens.push({ text: str, type: "string"});
-        } else if(num) {
-            tokens.push({ text: num, type: "number"});
-        } else if (word) {
-            if (KEYWORDS.has(word)) {
-                tokens.push({ text: word, type: "keyword"});
-            } else{
-                const nextChar = line[match.index + word.length];
-                tokens.push({ text: word, type: nextChar === "(" ? "function" : "identifier"});
-            }
-        }
+
         lastIndex = match.index + full.length;
     }
     if (lastIndex < line.length) {
-        tokens.push({ text: line.slice(lastIndex), type: "plain"});
+        tokens.push({text: line.slice(lastIndex), type: "plain"});
     }
     return tokens;
 }
@@ -136,7 +122,7 @@ export default function CodeEditorPanel({
                     </button>
                 )}
             </div>
-            <div className="mini-w-0 flex-1 overflow-auto py-3 font-mono text-[11px] leading-5">
+            <div className="min-w-0 flex-1 overflow-auto py-3 font-mono text-[11px] leading-5">
                 {isGenerating && !code && (
                     <div className="flex flex-col gap-2.5 px-4">
                         {SKELETON_WIDTHS.map((w, i) => (
