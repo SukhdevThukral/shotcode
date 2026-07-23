@@ -4,6 +4,7 @@ import { tokenizeLine,token_colors } from "./CodeEditorPanel"
  
 const EXAMPLE_CODE = `import React from 'react';
 
+
 interface ButtonProps {
   label?: string;
   onClick?: () => void;
@@ -22,12 +23,13 @@ export default function Button({
     </button>
   );
 }`;
+const EXAMPLE_LINES = EXAMPLE_CODE.split("\n");
+
 
 export default function ExamplePanel() {
-    const lines = EXAMPLE_CODE.split("\n");
 
     return (
-        <div className="flex h0full w0full min-w-0 flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-2xl">
+        <div className="flex h-full w-full min-w-0 flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-2xl">
             <div className="flex items-center justify-between border-b border-neutral-200 bg-neutral-50 px-4 py-2.5">
                 <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 rounded-full bg-red-400"/>
@@ -40,7 +42,7 @@ export default function ExamplePanel() {
                 </span>
             </div>
             <div className="flex-1 overflow-auto py-3 font-mono text-[11px] leading-5 opacity-70">
-                {lines.map((line, i) => (
+                {EXAMPLE_LINES.map((line, i) => (
                 <div key={i} className="flex px-3">
                     <span className="mr-3 w-5 shrink-0 select-none text-right text-neutral-300">
                     {i + 1}
