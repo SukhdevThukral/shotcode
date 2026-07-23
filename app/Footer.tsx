@@ -1,5 +1,3 @@
-"use client";
-
 import { Mail , AtSign } from "lucide-react";
 
 export default function Footer(){
@@ -12,10 +10,10 @@ export default function Footer(){
                     <h2 className="max-w-md text-4xl font-normal leading-tight text-white md:text-5xl">
                         Collab ;p?
                     </h2>
-                    <button 
-                    onClick={() => window.location.href="mailto:sukhdevthukral2411@gmail.com?subject=Lets collaborate over something!"}
-                    className="mt-8 rounded-full bg-white px-6 py-3 text-sm font-medium text-gray-900 transition-opacity hover:opacity-90">
-                        Contact Me
+                    <button className="mt-8 rounded-full bg-white px-6 py-3 text-sm font-medium text-gray-900 transition-opacity hover:opacity-90">
+                        <a href="mailto:sukhdevthukral2411@gmail.com?subject=Lets collaborate over something!">
+                            Contact Me
+                        </a>
                     </button>
                 </div>
                 <div className="relative mt-14 flex flex-col items-center gap-4">
@@ -23,7 +21,7 @@ export default function Footer(){
                         <a href="mailto:sukhdevthukral2411@gmail.com" aria-label="Email" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20">
                             <Mail size={16}/>
                         </a>
-                        <a href="https://instagram.com/sukhdevthukral" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20">
+                        <a target="_blank" rel="noopener noreferrer" href="https://instagram.com/sukhdevthukral" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20">
                             <AtSign
                              size={16}/>
                         </a>
