@@ -50,9 +50,14 @@ export default function Home() {
             <span className="bg-green-400 px-2 py-[0px] leading-none">code</span>
           </h1>
 
-          <button className="mt-8 bg-blue px-6 py-3 text-sm font-medium text-mdium text-white hover: bg-gray-800 transition-colors">
-            Generate with AI
+          <button className="flex items-center gap-2 mt-10 bg-blue-900 px-6 py-3 text-sm font-medium text-white hover:bg-gray-800 transition-colors">
+            <span>Generate with AI  </span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
+              <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
+            </svg>
           </button>
+
         </div>
         <p className="max-w-xs text-sm leading-relaxed text-gray-500 md:pt-10">
           Instantly transform your component designs into clean,
