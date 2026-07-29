@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+# shotcode 
+
+### Building AI, Robotics, and Developer Tools.
+
+Turn a screenshot of a UI component into clean, working React or Vue code.
+
+Upload an image of a button, card, form, or full section, shotcode analyzes the layout, spacing, and styling, then generates ready-to-use component code.
+
+Features:
+
+### - Screenshot-to-code: Upload any UI screenshot and get back React or Vue component code
+### -  Style-aware generation: infers spacing, colors, and layout structure from the image
+### -  Powered by Google Gemini: uses multimodal AI to read and interpret UI screenshots
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Package Manager:** pnpm
+- **Icons:** ```lucide-react```
+---
+
+## Features
+
+-  Fast performance
+-  Modern UI
+-  Smooth animations
+---
 
 ## Getting Started
 
-First, run the development server:
+## Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18+
+- pnpm (npm install -g pnpm or corepack enable)
+- A Google Generative AI API key
+
+### Installation
+
+```
+git clone https://github.com/SukhdevThukral/shotcode.git
+cd shotcode
+pnpm install
+```
+### Environment 
+Create a .env.local file in the project root:
+
+```
+GEMINI_API_KEY=your_api_key_here
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run Locally
+```
+pnpm dev
+```
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open http://localhost:3000 to view it in the browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## License
 
-## Learn More
+This project is open source under the MIT License.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+GitHub: https://github.com/SukhdevThukral
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+LinkedIn: https://linkedin.com/in/sukhdevthukral
