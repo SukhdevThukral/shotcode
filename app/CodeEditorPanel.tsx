@@ -44,6 +44,14 @@ export function tokenizeLine(line: string): Token[] {
 
         const [full, comment, str, num, word] = match;
 
+        let type: TokenType = "plain";
+        if (comment) type = "comment";
+        else if (str) type = "string"
+        else if (num) type = "number";
+        else if (word) type = KEYWORDS.has(word) ? "keyword" : "identifier";
+
+        tokens.push({text: full, type});
+
         lastIndex = match.index + full.length;
     }
     if (lastIndex < line.length) {
