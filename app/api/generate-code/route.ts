@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { stat } from "fs";
+import { error } from "console";
+import { NextRequestHint } from "next/dist/server/web/adapter";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
@@ -55,7 +56,7 @@ export async function POST(req: NextRequest) {
         const arrayBuffer = await file.arrayBuffer();
         const base64Data = Buffer.from(arrayBuffer).toString("base64");
 
-        const model = genAI.getGenerativeModel({model:"gemini-2.5-flash-lite"});
+        const model = genAI.getGenerativeModel({model:"gemini-3.5-flash-lite"});
 
         const result = await model.generateContent([
             sys_arch + `\n\nTarget framework: ${framework === "vue" ? "Vue 3 (Composition API, <script setup>)": "React (functional component, Typescript)"}`,
@@ -70,8 +71,26 @@ export async function POST(req: NextRequest) {
         const code = stripCodeFences(result.response.text());
 
         return NextResponse.json({ code });
-    } catch(err) {
+    } catch(err: any) {
         console.error("Gemini generation error:", err);
-        return NextResponse.json({ error: "Generation failed" }, {status:500});
+        
+        if (err?.status === 429 || err?.message?.toLowerCase().includes("quota")) {
+            return NextResponse.json(
+                {error : "Rate limit hit - kindly wait a moment and try again"},
+                {status:429}
+            );
+        }
+
+        if (err?.status === 503) {
+            return NextResponse.json(
+                {error: "Gemini is experiencing high demand right now - try again in a few seconds."},
+                {status: 503}
+            );
+        }
+
+        return NextResponse.json(
+            {error: err instanceof Error ? err.message: "Generation failed"},
+            {status:500}
+        );
     }
 }
