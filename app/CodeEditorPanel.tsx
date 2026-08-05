@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo, useState, useEffect } from "react";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Download } from "lucide-react";
 
 export type TokenType = "comment" | "string" | "number" | "keyword" | "identifier" | "function" | "plain";
 
@@ -85,12 +85,12 @@ function CodeLine({ line, index }: { line: string; index: number }) {
       <span className="mr-3 w-5 shrink-0 select-none text-right text-neutral-300">
         {index + 1}
       </span>
-      <span className="whitespace-pre">
+      <div className="min-w-0 flex-1 whitespace-pre-wrap break-words">
         {tokenizeLine(line).map((t, j) => (
           <span key={j} className={token_colors[t.type]}>{t.text}</span>
         ))}
         {line === "" && "\u00A0"}
-      </span>
+      </div>
     </div>
   );
 }
@@ -111,10 +111,21 @@ export default function CodeEditorPanel({
         setTimeout(() => setCopied(false), 1500);
     };
 
+    const handleDownload = () => {
+        if (!code) return;
+        const blob = new Blob([code], {type:"text/plain"});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a")
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
     if(!isGenerating && !code) return null;
 
     return (
-        <div className="flex h-full w-full min-w-0 flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-2xl">
+        <div className="flex h-[600px] w-full min-w-0 flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-2xl">
             <div className="flex items-center justify-between border-b border-neutral-200 bg-neutral-50 px-4 py-2.5">
                 <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 rounded-full bg-red-400"/>
@@ -122,6 +133,15 @@ export default function CodeEditorPanel({
                     <span className="h-2.5 w-2.5 rounded-full bg-green-400"/>
                     <span className="ml-3 font-mono text-xs text-neutral-500">{fileName}</span>
                 </div>
+
+                { code && (
+                    <button onClick={handleDownload}
+                    className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-neutral-400 transition-colors hover:bg-white/10 hover:text-black">
+                        <Download size={13}/>
+                        Download
+                    </button>
+                )}
+
                 {code && (
                     <button onClick={handleCopy}
                     className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-neutral-400 transition-colors hover:bg-white/10 hover:text-black">
@@ -129,8 +149,9 @@ export default function CodeEditorPanel({
                         {copied ? "Copied":"Copy"}
                     </button>
                 )}
+
             </div>
-            <div className="min-w-0 flex-1 overflow-auto py-3 font-mono text-[11px] leading-5">
+            <div className="custom-scrollbar min-w-0 flex-1 overflow-y-auto py-3 font-mono text-[11px] leading-5">
                 {isGenerating && !code && (
                     <div className="flex flex-col gap-2.5 px-4">
                         {SKELETON_WIDTHS.map((w, i) => (
