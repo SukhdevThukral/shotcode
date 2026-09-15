@@ -1,17 +1,15 @@
 
-# shotcode 
+# shotcode
 
-### Building AI, Robotics, and Developer Tools.
+shotcode turns a screenshot of a UI component into clean, working React or Vue code.
 
-Turn a screenshot of a UI component into clean, working React or Vue code.
+Upload an image of a button, card, form, or full section, shotcode analyzes the layout, spacing, and styling on the website, then generates absolutely ready-to-use component code.
 
-Upload an image of a button, card, form, or full section, shotcode analyzes the layout, spacing, and styling, then generates ready-to-use component code.
+## Features:
 
-Features:
-
-### - Screenshot-to-code: Upload any UI screenshot and get back React or Vue component code
-### -  Style-aware generation: infers spacing, colors, and layout structure from the image
-### -  Powered by Google Gemini: uses multimodal AI to read and interpret UI screenshots
+-  ss-to-code: Upload any UI screenshot and get back React or Vue component code
+-  style-aware generation: infers spacing, colors, and layout structure from the image
+-  powered by Google Gemini: uses multimodal AI to read and interpret UI screenshots
 
 ---
 
@@ -27,7 +25,7 @@ Features:
 ## Features
 
 -  Fast performance
--  Modern UI
+-  Simple and Modern 
 -  Smooth animations
 ---
 
@@ -63,12 +61,6 @@ Open http://localhost:3000 to view it in the browser.
 
 ## License
 
-This project is open source under the MIT License.
+MIT
 
 ---
-
-## Contact
-
-GitHub: https://github.com/SukhdevThukral
-
-LinkedIn: https://linkedin.com/in/sukhdevthukral
