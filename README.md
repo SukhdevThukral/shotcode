@@ -1,9 +1,13 @@
 
 # shotcode
 
-shotcode turns a screenshot of a UI component into clean, working React or Vue code.
+_shotcode turns a screenshot of a UI component into clean, working React or Vue code._ <br><br>
+![license](https://img.shields.io/badge/license-MIT-black)
 
-Upload an image of a button, card, form, or full section, shotcode analyzes the layout, spacing, and styling on the website, then generates absolutely ready-to-use component code.
+<img width="1145" height="893" alt="shotcode" src="https://github.com/user-attachments/assets/c9d320f3-4912-4576-9a2d-20c629b1b9cd" />
+<br><br><br>
+
+**Upload an image of a button, card, form, or full section, shotcode analyzes the layout, spacing, and styling on the website, then generates absolutely ready-to-use component code.**
 
 ## Features:
 
@@ -11,7 +15,6 @@ Upload an image of a button, card, form, or full section, shotcode analyzes the 
 -  style-aware generation: infers spacing, colors, and layout structure from the image
 -  powered by Google Gemini: uses multimodal AI to read and interpret UI screenshots
 
----
 
 ## Tech Stack
 
@@ -20,18 +23,14 @@ Upload an image of a button, card, form, or full section, shotcode analyzes the 
 - **Styling:** Tailwind CSS
 - **Package Manager:** pnpm
 - **Icons:** ```lucide-react```
----
+
 
 ## Features
 
 -  Fast performance
--  Simple and Modern 
--  Smooth animations
----
+-  Simple and Modern UI :D
 
-## Getting Started
-
-## Prerequisites
+## Prerequisites [if not using the hosted website ): ]
 
 - Node.js 18+
 - pnpm (npm install -g pnpm or corepack enable)
